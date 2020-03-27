@@ -238,8 +238,15 @@ class DialogPageChooser( ClientGUIDialogs.Dialog ):
                     self._result = ( 'page', ClientGUIManagement.CreateManagementControllerPetitions( petition_service_key ) )
                     
                 elif entry_type == 'deep_dive_select':
-
-                    self._result = ( 'page', ClientGUIManagement.CreateManagementControllerDeepDiveSearch())
+                    
+                    # don't make a new page, but reply as not done and act like we are going deeper into this thing.
+                    self.done( QW.QDialog.Rejected )
+                    print("Rejected, does this do weird shit?")
+                    self._action_picked = False
+                    return
+                    # this may be bad, but in testing we found that this made it act like it was okay to go away
+                
+                    # TODO: find a way to schedule some new version of that dialog to pop up?
                 
                 self._action_picked = True
                 

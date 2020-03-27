@@ -62,7 +62,6 @@ MANAGEMENT_TYPE_IMPORT_URLS = 7
 MANAGEMENT_TYPE_DUPLICATE_FILTER = 8
 MANAGEMENT_TYPE_IMPORT_MULTIPLE_WATCHER = 9
 MANAGEMENT_TYPE_PAGE_OF_PAGES = 10
-MANAGEMENT_TYPE_DEEP_DIVE_SEARCH = 11
 
 
 management_panel_types_to_classes = {}
@@ -85,15 +84,6 @@ def CreateManagementController( page_name, management_type, file_service_key = N
     
     return management_controller
     
-
-def CreateManagementControllerDeepDiveSearch():
-    print("Creating controller!")
-    management_controller = CreateManagementController( 'deep dive select', MANAGEMENT_TYPE_DEEP_DIVE_SEARCH, file_service_key = CC.LOCAL_FILE_SERVICE_KEY )
-
-    # TODO: investigate why we are not getting a nice sidebar and how to change the sidebar like other pages do.
-
-    return management_controller
-
 
 def CreateManagementControllerDuplicateFilter():
     
@@ -904,12 +894,6 @@ def WaitOnDupeFilterJob( job_key ):
     time.sleep( 0.5 )
     
     HG.client_controller.pub( 'refresh_dupe_page_numbers' )
-
-class ManagementPanelDeepDiveSearch( ManagementPanel ):
-    pass
-
-management_panel_types_to_classes[ MANAGEMENT_TYPE_DEEP_DIVE_SEARCH ] = ManagementPanelDeepDiveSearch
-
     
 class ManagementPanelDuplicateFilter( ManagementPanel ):
     
