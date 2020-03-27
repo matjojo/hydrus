@@ -6,6 +6,9 @@
 
 try:
     
+    if True:
+        import sys
+        print(f"In venv?: {hasattr(sys, 'real_prefix') or sys.base_prefix != sys.prefix}")
     import locale
     
     try: locale.setlocale( locale.LC_ALL, '' )

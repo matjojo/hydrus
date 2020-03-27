@@ -163,6 +163,10 @@ class DialogPageChooser( ClientGUIDialogs.Dialog ):
         elif entry_type == 'page_import_urls':
             
             button.setText( 'urls' )
+
+        elif entry_type == 'deep_dive_select':
+
+            button.setText( 'deep dive selector' )
             
         
         button.show()
@@ -233,6 +237,9 @@ class DialogPageChooser( ClientGUIDialogs.Dialog ):
                     
                     self._result = ( 'page', ClientGUIManagement.CreateManagementControllerPetitions( petition_service_key ) )
                     
+                elif entry_type == 'deep_dive_select':
+
+                    self._result = ( 'page', ClientGUIManagement.CreateManagementControllerDeepDiveSearch())
                 
                 self._action_picked = True
                 
@@ -292,6 +299,7 @@ class DialogPageChooser( ClientGUIDialogs.Dialog ):
             
             entries.append( ( 'pages_notebook', None ) )
             entries.append( ( 'page_duplicate_filter', None ) )
+            entries.append( ( 'deep_dive_select', None ) )
             
         
         if len( entries ) <= 4:

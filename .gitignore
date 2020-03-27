@@ -49,3 +49,5 @@ db/*.conf
 db/client_files/
 db/server_files/
 db/missing_and_invalid_files/
+
+bin/ffmpeg.exe
